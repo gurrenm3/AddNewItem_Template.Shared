@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="AddNewItem_Template.Shared.AddItemUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:shared="clr-namespace:AddNewItem_Template.Shared"
+             xmlns:vsshell="clr-namespace:Microsoft.VisualStudio.Shell;assembly=Microsoft.VisualStudio.Shell.15.0"
+             Background="#303030"
+             mc:Ignorable="d"
+             d:DesignHeight="105"
+             d:DesignWidth="450"
+             Name="AddNewItem">
+    <UserControl.Resources>
+        <DataTemplate x:Name="newItemViewTemplate" DataType="{x:Type shared:NewItemViewModel}" >
+            <shared:NewItemView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="itemExistsViewTemplate" DataType="{x:Type shared:ItemAlreadyExistsViewModel}" >
+            <shared:ItemAlreadyExistsView DataContext="{Binding}"/>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <ContentControl x:Name="contentPanel" Content="{Binding}"/>
+        <ContentControl x:Name="itemExistsPanel"/>
+    </Grid>
+</UserControl>

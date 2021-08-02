@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>5ce0d56b-021a-4d4d-9e77-f0924b8941b9</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AddNewItem_Template.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AddItemToolWindow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AddItemUserControl.xaml.cs">
+      <DependentUpon>AddItemUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\CheckBoxExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\DTE2Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\StringExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\TextSelectionExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ToolWindowPaneExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IStart.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ItemAlreadyExistsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NewItemViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ItemAlreadyExistsView.xaml.cs">
+      <DependentUpon>ItemAlreadyExistsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\NewItemView.xaml.cs">
+      <DependentUpon>NewItemView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)AddItemUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\ItemAlreadyExistsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Views\NewItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>
