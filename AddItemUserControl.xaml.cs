@@ -3,6 +3,7 @@ using EnvDTE80;
 using System;
 using System.Windows.Controls;
 using Microsoft.VisualStudio.Shell;
+
 namespace AddNewItem_Template.Shared
 {
     /// <summary>
@@ -24,7 +25,13 @@ namespace AddNewItem_Template.Shared
         {
             this.InitializeComponent();
             instance = this;
-            this.DataContext = new NewItemViewModel();
+            this.contentPanel.Content = new NewItemView();
+            this.Loaded += AddItemUserControl_Loaded;
+        }
+
+        private void AddItemUserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            
         }
 
         ~AddItemUserControl() => Dispose();
@@ -34,6 +41,8 @@ namespace AddNewItem_Template.Shared
             _toolName = toolName;
             _toolWindow = toolWindow;
             _toolWindow.Caption = $"Add New {_toolName}";
+            this.contentPanel.Content = new NewItemView();
+            //((NewItemView)this.contentPanel.Content).isPublic.Content = checkboxText; 
             dte2 = AddItemToolWindow.dte2;
             dte = _toolWindow.GetService<DTE>();
             sourceFolder = dte2.GetPathToSelectedItem();

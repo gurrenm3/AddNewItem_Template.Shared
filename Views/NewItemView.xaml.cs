@@ -10,6 +10,7 @@ namespace AddNewItem_Template.Shared
     /// </summary>
     public partial class NewItemView : UserControl
     {
+        internal static NewItemView instance;
         bool tryingToCreateFile = false;
         AddItemUserControl uc;
 
@@ -20,10 +21,15 @@ namespace AddNewItem_Template.Shared
         {
             this.InitializeComponent();
             uc = AddItemUserControl.instance;
-            isPublic.Content = MyExtensionInfo.checkboxText;
+            instance = this;
+
+            if (!string.IsNullOrEmpty(MyExtensionInfo.checkboxText))
+                isPublic.Content = MyExtensionInfo.checkboxText;
+            else
+                isPublic.Visibility = Visibility.Hidden;
         }
 
-        private void AddNewItem_Loaded(object sender, RoutedEventArgs e)
+        private void NewItemView_Loaded(object sender, RoutedEventArgs e)
         {
             itemNameTB.Focus();
         }
@@ -32,11 +38,12 @@ namespace AddNewItem_Template.Shared
         public void TryCreateFile()
         {
             string itemName = itemNameTB.Text;
+            
             if (string.IsNullOrEmpty(itemName))
                 return;
 
             tryingToCreateFile = true;
-            string fileExtension = itemName.EndsWith(".cs") ? "" : ".cs";
+            string fileExtension = itemName.EndsWith(MyExtensionInfo.fileExtension) ? "" : MyExtensionInfo.fileExtension;
             savePath = $"{uc.sourceFolder}\\{itemName}{fileExtension}";
 
             if (File.Exists(savePath))

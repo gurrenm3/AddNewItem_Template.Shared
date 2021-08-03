@@ -11,7 +11,7 @@
              d:DesignWidth="450"
              Name="AddNewItem"
              KeyUp="AddItemUserControl_KeyUp"
-             Loaded="AddNewItem_Loaded">
+             Loaded="NewItemView_Loaded">
     <UserControl.Resources>
         <SolidColorBrush x:Key="forgroundColor" Color="White"/>
         <Style TargetType="Button">

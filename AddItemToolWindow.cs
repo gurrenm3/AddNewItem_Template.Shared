@@ -16,7 +16,9 @@ namespace AddNewItem_Template.Shared
     /// implementation of the IVsUIElementPane interface.
     /// </para>
     /// </remarks>
-    [Guid("06c4da79-dcf9-4c16-bee0-c55ef312d5e2")]
+
+
+    [Guid(MyExtensionInfo.addItemWindowGUID)]
     public class AddItemToolWindow : ToolWindowPane, IStart
     {
         public AddItemUserControl UserControl { get; set; }
